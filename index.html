@@ -75,22 +75,16 @@
 
 			setTimeout(fetchData, 500);
 		});
-
-		// Add the Flot version string to the footer
-		$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 	});
 
 	</script>
 </head>
 <body>
-
 	<div id="content">
 		<div class="graph-container">
 			<div id="placeholder" class="graph-placeholder"></div>
 		</div>
 		<p><button class="dataUpdate">Poll for data</button></p>
 	</div>
-	<div id="footer">Copyright &copy; 2007 - 2013 IOLA and Ole Laursen</div>
-
 </body>
 </html>
