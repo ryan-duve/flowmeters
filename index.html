@@ -27,13 +27,7 @@
 		// Initiate a recurring data update
 		$("button.dataUpdate").click(function () {
 
-			data = [];
-
-			var iteration = 0;
-
 			function fetchData() {
-
-				++iteration;
 
 				function onDataReceived(series) {
 					// Load all the data in one pass; if we only got partial
