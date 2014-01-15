@@ -14,16 +14,12 @@
 	$(function() {
 
 		var options = {
-			lines: {
-				show: true
-			},
-			points: {
-				show: true
-			},
-			xaxis: {
-				tickDecimals: 0,
-				tickSize: 1
-			}
+				lines: {show: true},
+				points: {show: true},
+				xaxis: {
+					tickDecimals: 0,
+					tickSize: 1
+				}
 		};
 
 		var data = [];
@@ -74,8 +70,8 @@
 			}
 
 			setTimeout(fetchData, 500);
-		});
-	});
+		});//end button.dataUpdate()
+	});//end onPageLoad
 
 	</script>
 </head>
