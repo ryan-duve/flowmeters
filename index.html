@@ -28,7 +28,6 @@
 		$("button.dataUpdate").click(function () {
 
 			data = [];
-			alreadyFetched = {};
 
 			var iteration = 0;
 
@@ -54,9 +53,6 @@
 					});
 				}
 
-				// Normally we call the same URL - a script connected to a
-				// database - but in this case we only have static example
-				// files, so we need to modify the URL.
 				$.ajax({
 					url: "flow.php",
 					type: "GET",
