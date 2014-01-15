@@ -31,7 +31,6 @@
 		$.plot("#placeholder", data, options);
 
 		// Fetch one series, adding to what we already have
-
 		var alreadyFetched = {};
 
 		$("button.fetchSeries").click(function () {
@@ -39,19 +38,16 @@
 			var button = $(this);
 
 			// Find the URL in the link right next to us, then fetch the data
-
 			var dataurl = button.siblings("a").attr("href");
 
 			function onDataReceived(series) {
 
 				// Extract the first coordinate pair; jQuery has parsed it, so
 				// the data is now just an ordinary JavaScript object
-
 				var firstcoordinate = "(" + series.data[0][0] + ", " + series.data[0][1] + ")";
 				button.siblings("span").text("Fetched " + series.label + ", first point: " + firstcoordinate);
 
 				// Push the new data onto our existing data array
-
 				if (!alreadyFetched[series.label]) {
 					alreadyFetched[series.label] = true;
 					data.push(series);
@@ -69,7 +65,6 @@
 		});
 
 		// Initiate a recurring data update
-
 		$("button.dataUpdate").click(function () {
 
 			data = [];
@@ -84,30 +79,26 @@
 				++iteration;
 
 				function onDataReceived(series) {
-
 					// Load all the data in one pass; if we only got partial
 					// data we could merge it with what we already have.
-
 					data = [ series ];
-					//$.plot("#placeholder", data, options);//duve
-$.plot($("#placeholder"), data, {
-yaxis: {
-},
-xaxis: { mode: "time",
-timeformat:"%h:%M:%S",
-min: Date.now()-120*1000,//120 seconds * 1000 milliseconds/second
-max: Date.now()
-},
-"lines": {"show": "true"},
-"points": {"show": "true"},
-clickable:true,hoverable: true
-});
+
+					$.plot($("#placeholder"), data, {
+						yaxis: {},
+						xaxis: { mode: "time",
+							timeformat:"%h:%M:%S",
+							min: Date.now()-120*1000,//120 seconds * 1000 milliseconds/second
+							max: Date.now()
+						},
+						"lines": {"show": "true"},
+						"points": {"show": "true"},
+						clickable:true,hoverable: true
+					});
 				}
 
 				// Normally we call the same URL - a script connected to a
 				// database - but in this case we only have static example
 				// files, so we need to modify the URL.
-
 				$.ajax({
 					url: "flow.php",
 					type: "GET",
@@ -122,11 +113,9 @@ clickable:true,hoverable: true
 		});
 
 		// Load the first series by default, so we don't have an empty plot
-
 		$("button.fetchSeries:first").click();
 
 		// Add the Flot version string to the footer
-
 		$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 	});
 
@@ -135,20 +124,12 @@ clickable:true,hoverable: true
 <body>
 
 	<div id="content">
-
 		<div class="graph-container">
 			<div id="placeholder" class="graph-placeholder"></div>
 		</div>
-
-		<p>
-			<button class="dataUpdate">Poll for data</button>
-		</p>
-
+		<p><button class="dataUpdate">Poll for data</button></p>
 	</div>
-
-	<div id="footer">
-		Copyright &copy; 2007 - 2013 IOLA and Ole Laursen
-	</div>
+	<div id="footer">Copyright &copy; 2007 - 2013 IOLA and Ole Laursen</div>
 
 </body>
 </html>
