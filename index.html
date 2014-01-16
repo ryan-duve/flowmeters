@@ -25,41 +25,38 @@
 		var data = [];
 
 		// Initiate a recurring data update
-		$("button.dataUpdate").click(function () {
+		function fetchData() {
 
-			function fetchData() {
+			function onDataReceived(series) {
+				console.log(series);
+				// Load all the data in one pass; if we only got partial
+				// data we could merge it with what we already have.
+				data = series;
 
-				function onDataReceived(series) {
-					console.log(series);
-					// Load all the data in one pass; if we only got partial
-					// data we could merge it with what we already have.
-					data = series;
-
-					$.plot($("#placeholder"), data, {
-						yaxis: {},
-						xaxis: { mode: "time",
-							timeformat:"%h:%M:%S",
-							min: Date.now()-120*1000,//120 seconds * 1000 milliseconds/second
-							max: Date.now()
-						},
-						"lines": {"show": "true"},
-						"points": {"show": "true"},
-						"legend":{"position":"nw"}
-					});
-				}
-
-				$.ajax({
-					url: "flow.php",
-					type: "GET",
-					dataType: "json",
-					success: onDataReceived
+				$.plot($("#placeholder"), data, {
+					yaxis: {},
+					xaxis: { mode: "time",
+						timeformat:"%h:%M:%S",
+						min: Date.now()-120*1000,//120 seconds * 1000 milliseconds/second
+						max: Date.now()
+					},
+					"lines": {"show": "true"},
+					"points": {"show": "true"},
+					"legend":{"position":"nw"}
 				});
-
-				setTimeout(fetchData, 500);
 			}
 
+			$.ajax({
+				url: "flow.php",
+				type: "GET",
+				dataType: "json",
+				success: onDataReceived
+			});
+
 			setTimeout(fetchData, 500);
-		});//end button.dataUpdate()
+		}
+
+		setTimeout(fetchData, 500);
 	});//end onPageLoad
 
 	</script>
@@ -69,7 +66,6 @@
 		<div class="graph-container">
 			<div id="placeholder" class="graph-placeholder"></div>
 		</div>
-		<p><button class="dataUpdate">Poll for data</button></p>
 	</div>
 </body>
 </html>
