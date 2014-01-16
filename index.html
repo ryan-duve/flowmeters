@@ -30,9 +30,10 @@
 			function fetchData() {
 
 				function onDataReceived(series) {
+					console.log(series);
 					// Load all the data in one pass; if we only got partial
 					// data we could merge it with what we already have.
-					data = [ series ];
+					data = series;
 
 					$.plot($("#placeholder"), data, {
 						yaxis: {},
@@ -43,6 +44,7 @@
 						},
 						"lines": {"show": "true"},
 						"points": {"show": "true"},
+						"legend":{"position":"nw"}
 					});
 				}
 
