@@ -39,16 +39,16 @@
  // 	{ label:"Bar", data: [ [11, 13], [19, 11] }
  //]
 
- $res="[";
- $res.="{\"label\":\"separator\",\"data\":[";
+ $res="{\"separator\":";
+ $res.="{\"label\":\"Separator\",\"data\":[";
  $res.=implode(',',$data0);
- $res.="]},{\"label\":\"screen\",\"data\":[";
+ $res.="]},\"screen\":{\"label\":\"Screen\",\"data\":[";
  $res.=implode(',',$data1);
- $res.="]},{\"label\":\"he-3\",\"data\":[";
+ $res.="]},\"he-3\":{\"label\":\"He-3\",\"data\":[";
  $res.=implode(',',$data2);
- $res.="]},{\"label\":\"other\",\"data\":[";
+ $res.="]},\"other\":{\"label\":\"Other\",\"data\":[";
  $res.=implode(',',$data3);
- $res.="]}]";
+ $res.="]}}";
 
  echo $res;
 
