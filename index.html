@@ -37,8 +37,8 @@
 					yaxis: {},
 					xaxis: { mode: "time",
 						timeformat:"%h:%M:%S",
-						min: Date.now()-120*1000,//120 seconds * 1000 milliseconds/second
-						max: Date.now()
+						min: Date.now()-120*1000-18000*1000,//120 seconds * 1000 milliseconds/second
+						max: Date.now()-18000*1000//subtract 18000 seconds for GMT->EST time zone
 					},
 					"lines": {"show": "true"},
 					"points": {"show": "true"},
@@ -53,15 +53,16 @@
 				success: onDataReceived
 			});
 
-			setTimeout(fetchData, 500);
+			setTimeout(fetchData, 1000);
 		}
 
-		setTimeout(fetchData, 500);
+		setTimeout(fetchData, 1000);
 	});//end onPageLoad
 
 	</script>
 </head>
 <body>
+<h2>Flow Meters (SLPM)</h2>
 	<div id="content">
 		<div class="graph-container">
 			<div id="placeholder" class="graph-placeholder"></div>
