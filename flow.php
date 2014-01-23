@@ -46,7 +46,7 @@
  $res.=implode(',',$data1);
  $res.="]},\"he-3\":{\"label\":\"He-3\",\"data\":[";
  $res.=implode(',',$data2);
- $res.="]},\"other\":{\"label\":\"Other\",\"data\":[";
+ $res.="]},\"evaporator\":{\"label\":\"Evaporator\",\"data\":[";
  $res.=implode(',',$data3);
  $res.="]}}";
 
