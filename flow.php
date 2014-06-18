@@ -6,6 +6,14 @@
  //http://stackoverflow.com/questions/4961524/mysql-query-latest-timestamp-unique-value-from-the-last-30-minutes
  $flow_query="SELECT device AS d, created_at AS createdtime, measurement_reading AS measurement FROM usb1208ls WHERE created_at > (now() - interval 120 second)";
 
+
+ //not getting anything back?  try running this
+// $test_query="SELECT device AS d, created_at AS createdtime, measurement_reading AS measurement FROM usb1208ls WHERE created_at > (now() - interval 120 second)";
+// $test_result=mysql_query($test_query) or die(mysql_error());
+// $test_r=mysql_fetch_assoc($test_result);
+// echo "console.log('".$test_r['d']."');";
+
+
  //run one query
  $flow_result=mysql_query($flow_query) or die(mysql_error());
 
@@ -51,5 +59,7 @@
  $res.="]}}";
 
  echo $res;
+
+ //echo "console.log('leaving flow.php')";
 
 ?>
