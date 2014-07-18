@@ -34,6 +34,7 @@
 				var datasets = series;
 
 
+
 				// hard-code color indices to prevent them from shifting as
 				// countries are turned on/off
 
@@ -49,12 +50,14 @@
 				var choiceContainer = $("#choices");
 				$.each(datasets, function(key, val) {
 					//console.log(val.color);
+					console.log(datasets[key]["data"][0][1]);
 					if($("#id"+key).length==0){
 						choiceContainer.append("<br/><div style='background-color:"+ coloring[j++] +"'><input type='checkbox' name='" + key +
 							"' checked='checked' id='id" + key + "'></input>" +
 							"<label for='id" + key + "'>"
-							+ val.label + "</label></div>");
+							+ val.label + "<div class='lastReading' id='lastReading"+key+"'></div></label></div>");
 					}
+					$('#lastReading'+key).html(datasets[key]["data"][0][1]);
 				});
 
 

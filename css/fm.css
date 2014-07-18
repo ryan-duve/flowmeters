@@ -95,3 +95,6 @@ input[type=checkbox] {
 .legend table {
 	border-spacing: 5px;
 }
+.lastReading{
+	text-align: center;
+}
