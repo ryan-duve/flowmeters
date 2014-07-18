@@ -50,14 +50,19 @@
 				var choiceContainer = $("#choices");
 				$.each(datasets, function(key, val) {
 					//console.log(val.color);
-					console.log(datasets[key]["data"][0][1]);
+					//console.log(datasets[key]["data"][0][1]);
+						
 					if($("#id"+key).length==0){
 						choiceContainer.append("<br/><div style='background-color:"+ coloring[j++] +"'><input type='checkbox' name='" + key +
 							"' checked='checked' id='id" + key + "'></input>" +
 							"<label for='id" + key + "'>"
 							+ val.label + "<div class='lastReading' id='lastReading"+key+"'></div></label></div>");
 					}
-					$('#lastReading'+key).html(datasets[key]["data"][0][1]);
+
+					//update lastReading inside label
+					//http://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-in-javascript#12830454
+					var lastReading=parseFloat(datasets[key]["data"][0][1]).toFixed(2);
+					$('#lastReading'+key).html(lastReading);
 				});
 
 
