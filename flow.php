@@ -21,8 +21,8 @@
 
  while($r=mysql_fetch_assoc($flow_result)){
 
-	//factor of 1K for javascript time, subtract 18K seconds for flot EST->GMT fudge factor
- 	$ctime=(strtotime($r["createdtime"])-18000)*1000;
+	//factor of 1K for javascript time
+ 	$ctime=(strtotime($r["createdtime"]))*1000;
 
 	switch ($r["d"]){
 		case "d0": 
